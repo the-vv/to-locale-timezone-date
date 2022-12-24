@@ -1,9 +1,13 @@
 {
   "name": "to-locale-timezone-date",
   "version": "1.0.0",
-  "description": "This package can be used to convert a date to iso date string including tiomezone appended at end",
+  "description": "This is a simple function that converts a GMT date to a date string appended and added with your current system time zone.",
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-vv/to-locale-timezone-date"
+  },
   "scripts": {
     "clean": "rm -rf ./lib",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
