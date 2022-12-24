@@ -4,7 +4,7 @@
  * @param options - The options to use.
  * @returns The ISO locale date string.
  */
-export const toIsoLocaleDate = (
+export const toLocaleTimezoneDate = (
     date: Date | string | number,
     options?: { throwInvalidException?: boolean }
 ): string | null => {
