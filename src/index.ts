@@ -1,9 +1,21 @@
-export const toIsoLocaleDate = (date: Date | string | number): string | null => {
+/**
+ * Converts a date object to an ISO locale date string.
+ * @param date - The date to convert.
+ * @param options - The options to use.
+ * @returns The ISO locale date string.
+ */
+export const toIsoLocaleDate = (
+    date: Date | string | number,
+    options?: { throwInvalidException?: boolean }
+): string | null => {
     if (!date) {
         return null;
     }
     let dateToParse = date;
     if (!isValidDate(date)) {
+        if (options?.throwInvalidException) {
+            throw new Error('Invalid date');
+        }
         return null;
     }
     dateToParse = new Date(date); // convert date to JS Date object
@@ -23,15 +35,21 @@ export const toIsoLocaleDate = (date: Date | string | number): string | null => 
 }
 
 /** 
-* function checks if a date is valid
-* @param date - date to check
-* @returns true if date is valid
-* @returns false if date is not valid
-*/
+ * Checks if a date is valid.
+ * @param date - The date to check.
+ * @returns true if date is valid.
+ * @returns false if date is not valid.
+ */
 const isValidDate = (date: Date | string | number): boolean => {
-    // create a new date object and pass in the date parameter
-    const dateWrapper = new Date(date);
+    // if date is a string or number, then convert to a date object
+    if (typeof date === 'string' || typeof date === 'number') {
+        date = new Date(date);
+    }
+    // if date is not a date object, then return false
+    if (!(date instanceof Date)) {
+        return false;
+    }
     // returns true if the date is valid
     // returns false if the date is not valid
-    return !isNaN(dateWrapper.getDate());
+    return !isNaN(date.getDate());
 }
