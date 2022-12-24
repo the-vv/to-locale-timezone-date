@@ -2,6 +2,10 @@
 
 This is a simple function that converts a GMT date to a date string appended and added with your current system time zone.
 
+## Installation
+    
+    npm install to-locale-timezone-date
+
 ## Usage
     
     toIsoLocaleDate(date, options)
