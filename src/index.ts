@@ -1,4 +1,4 @@
-export const toIsoLocaleDate = (date) => {
+export const toIsoLocaleDate = (date: Date | string | number): string | null => {
     if (!date) {
         return null;
     }
@@ -7,11 +7,11 @@ export const toIsoLocaleDate = (date) => {
         return null;
     }
     dateToParse = new Date(date); // convert date to JS Date object
-    
+
     const tzo = -dateToParse.getTimezoneOffset(); // get timezone offset
     const dif = tzo >= 0 ? '+' : '-'; // determine + or -
-    const pad = (num) => ((num < 10 ? '0' : '') + num); // pad with leading zero
-    
+    const pad = (num: number) => ((num < 10 ? '0' : '') + num); // pad with leading zero
+
     return dateToParse.getFullYear() + // get year
         '-' + pad(dateToParse.getMonth() + 1) + // get month, add 1 because getMonth() is 0-based
         '-' + pad(dateToParse.getDate()) + // get day
@@ -28,9 +28,9 @@ export const toIsoLocaleDate = (date) => {
 * @returns true if date is valid
 * @returns false if date is not valid
 */
-const isValidDate = (date) => {
+const isValidDate = (date: Date | string | number): boolean => {
     // create a new date object and pass in the date parameter
-    var dateWrapper = new Date(date);
+    const dateWrapper = new Date(date);
     // returns true if the date is valid
     // returns false if the date is not valid
     return !isNaN(dateWrapper.getDate());
