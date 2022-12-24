@@ -1,6 +1,6 @@
 {
   "name": "to-locale-timezone-date",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "This package can be used to convert a date to iso date string including tiomezone appended at end",
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
