@@ -6,7 +6,10 @@
  */
 export const toLocaleTimezoneDate = (
     date: Date | string | number,
-    options?: { throwInvalidException?: boolean }
+    options?: {
+        throwInvalidException?: boolean,
+        customOffset?: number,
+    }
 ): string | null => {
     if (!date) {
         return null;
@@ -19,8 +22,14 @@ export const toLocaleTimezoneDate = (
         return null;
     }
     dateToParse = new Date(date); // convert date to JS Date object
-
-    const tzo = -dateToParse.getTimezoneOffset(); // get timezone offset
+    let tzo = -dateToParse.getTimezoneOffset(); // get timezone offset
+    if (typeof options?.customOffset !== 'undefined') {
+        if (typeof options?.customOffset === 'number') {
+            tzo = -options.customOffset;
+        } else {
+            throw new Error('Invalid offset');
+        }
+    }
     const dif = tzo >= 0 ? '+' : '-'; // determine + or -
     const pad = (num: number) => ((num < 10 ? '0' : '') + num); // pad with leading zero
 
