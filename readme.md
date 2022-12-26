@@ -20,6 +20,14 @@ Usefull when you want to convert a date to a string and send it to the server. s
 
     toLocaleTimezoneDate(new Date()) // 2022-12-24T23:02:57+05:30
 
+    toLocaleTimezoneDate(new Date('2022-12-24')) // 2022-12-24T05:30:00+05:30
+
+    toLocaleTimezoneDate(new Date(), { customOffset: 0 }) // 2022-12-27T00:57:21+00:00
+
+    toLocaleTimezoneDate(new Date(), { customOffset: 60 }) // 2022-12-27T00:57:21-01:00
+
+    toLocaleTimezoneDate(new Date(), { customOffset: -60 }) // 2022-12-27T00:57:21+01:00
+
     toLocaleTimezoneDate('Some invalid date', { throwInvalidException: true }) // Error: Invalid date
 
     toLocaleTimezoneDate('Some invalid date') // null
@@ -27,5 +35,6 @@ Usefull when you want to convert a date to a string and send it to the server. s
 ### Options
     
     {
-        throwInvalidException: false // if true, throws an exception when the date is invalid
+        throwInvalidException: false // if true, throws an exception when the date is invalid,
+        customOffset: null // if set, uses the custom offset instead of the system time zone
     }

@@ -62,3 +62,5 @@ const isValidDate = (date: Date | string | number): boolean => {
     // returns false if the date is not valid
     return !isNaN(date.getDate());
 }
+
+console.log(toLocaleTimezoneDate(new Date('2022-12-24')))
